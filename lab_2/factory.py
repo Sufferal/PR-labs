@@ -73,15 +73,7 @@ class PlayerFactory:
       player_msg.email         = player.email
       player_msg.date_of_birth = player.date_of_birth.strftime('%Y-%m-%d')
       player_msg.xp            = player.xp
-
-      cls_to_enum = {
-        "Berserk": player_pb2.Class.Berserk,
-        "Tank":    player_pb2.Class.Tank,
-        "Paladin": player_pb2.Class.Paladin,
-        "Mage":    player_pb2.Class.Mage
-      }
-      # Convert string to enum
-      player_msg.cls = cls_to_enum.get(player.cls)
+      player_msg.cls           = player.cls
 
     return players_list.SerializeToString()
 
