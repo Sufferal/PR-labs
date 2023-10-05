@@ -4,7 +4,6 @@ import signal
 import threading
 import json
 import re
-from time import sleep
 
 HOST = '127.0.0.1'
 PORT = 8080
@@ -37,7 +36,7 @@ def handle_request(client_socket):
   status_code = 200
 
   # Prepare and send appropriate HTTP response
-  f = open('data.json')
+  f = open('product_input.json')
   data = json.load(f)
 
   if path == '/':
@@ -62,7 +61,10 @@ def handle_request(client_socket):
           response_body = f"<h1>Product Details</h1>"
           response_body += f"<p>ID: { product['id'] }</p>"
           response_body += f"<p>Name: { product['name'] }</p>"
+          response_body += f"<p>Author: { product['author'] }</p>"
           response_body += f"<p>Price: { product['price'] }</p>"
+          response_body += f"<p>Description: { product['description'] }</p>"
+
   else:
     response_body = "<h1>Error 404: Page not found</h1>"
     status_code = 404
