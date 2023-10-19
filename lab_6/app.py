@@ -21,7 +21,7 @@ def create_app():
   app.register_blueprint(swagger_ui_blueprint, url_prefix = SWAGGER_URL)
 
   # Configure SQLAlchemy to use SQLite
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///car_database.db'
+  app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@localhost:5432/cars'
   db.init_app(app)
   return app
 
