@@ -1,0 +1,176 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Access API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/cars": {
+      "get": {
+        "description": "Returns all cars",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }, 
+      "post": {
+        "description": "Create a car",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Car data",
+            "in": "body",
+            "description": "Car JSON to post",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created car"
+          },
+          "400": {
+            "description": "Invalid request data"
+          }
+        }
+      }
+    },
+    "/api/car/{id}": {
+      "get": {
+        "description": "Returns a car by id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Car id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Car not found."
+          }
+        }
+      },
+      "put": {
+        "description": "Update a car",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Car id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }, 
+          {
+            "name": "Car data",
+            "in": "body",
+            "description": "JSON data for the api",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/definitions/Car"
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully updated car."
+          },
+          "404": {
+            "description": "Car not found."
+          }, 
+          "500": {
+            "description": "Server error."
+          }
+        }
+      }, 
+      "delete": {
+        "description": "Delete a car by id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path", 
+            "description": "Id to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }, 
+          {
+            "name": "X-Delete-Password",
+            "in": "header",
+            "description": "Password: ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated car."
+          },
+          "401": {
+            "description": "Incorrect password."
+          }, 
+          "404": {
+            "description": "Car not found."
+          },
+          "500": {
+            "description": "Server error."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Car": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
