@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.6rem;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input:disabled {
+  background-color: #eee;
+  font-style: italic;
+}
+
+textarea {
+  resize: none;
+  font-size: 2rem !important;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.form {
+  padding: 5rem 4rem;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .form-group-label {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+}
+
+.form-submit {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(60,132,206,1);
+  outline: none;
+  border: none;
+  color: #fff; 
+  font-size: 2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgba(101,0,94,1);
+    color: #fff; 
+  }
+}
+
+#emailStatus {
+  display: none;
+  margin-top: 3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  background-color: #ccc;
+}
+
+.success {
+  background-color: #d4edda !important; 
+  color: green;
+}
+
+.error {
+  background-color: #f8d7da !important;
+  color: red;
+}
